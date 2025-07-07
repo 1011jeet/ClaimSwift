@@ -5,7 +5,7 @@
 
 export async function generateChatResponse(messages: any[]) {
   // In a real implementation, this would call the Gemini API with the provided API key
-  // const apiKey = "AIzaSyBvIEb59ECl1PDVBShPGWKsteBODB2usfE";
+  // const apiKey = "..";
 
   // For the mockup, we'll return a predefined response
   const responses = [

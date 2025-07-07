@@ -112,13 +112,13 @@ export default function ChatbotWidget() {
   const generateResponse = async (messageWithContext: string) => {
     try {
       const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" })
-      
+
       const prompt = `${SYSTEM_PROMPT}\n\n${messageWithContext}\n\nClaim Saathi:`
 
       const result = await model.generateContent(prompt)
       const text = result.response.text()
       console.log("Gemini Response:", text) // Debug log
-      
+
       // Add bot message to chat history
       chatHistory.push({ role: 'chatbot', content: text });
 
@@ -156,7 +156,7 @@ export default function ChatbotWidget() {
 
     // Process message with context and generate response
     const response = await processChatMessage(message)
-    
+
     const botMessage: Message = {
       id: (Date.now() + 1).toString(),
       content: response.content,
@@ -189,9 +189,8 @@ export default function ChatbotWidget() {
 
   return (
     <div
-      className={`fixed bottom-4 right-4 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 ${
-        isExpanded ? "w-[480px] h-[600px]" : "w-[380px] h-[500px]"
-      }`}
+      className={`fixed bottom-4 right-4 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 ${isExpanded ? "w-[480px] h-[600px]" : "w-[380px] h-[500px]"
+        }`}
     >
       {/* Header */}
       <div className="flex items-center justify-between p-4 bg-gradient-to-r from-[#07a6ec] to-[#fa6724] text-white">
@@ -241,9 +240,8 @@ export default function ChatbotWidget() {
           {messages.map((msg) => (
             <div
               key={msg.id}
-              className={`flex items-start gap-3 ${
-                msg.sender === "user" ? "flex-row-reverse" : ""
-              }`}
+              className={`flex items-start gap-3 ${msg.sender === "user" ? "flex-row-reverse" : ""
+                }`}
             >
               {msg.sender === "bot" && (
                 <div className="relative">
@@ -258,11 +256,10 @@ export default function ChatbotWidget() {
                 </div>
               )}
               <div
-                className={`rounded-2xl px-4 py-2.5 max-w-[80%] ${
-                  msg.sender === "user"
+                className={`rounded-2xl px-4 py-2.5 max-w-[80%] ${msg.sender === "user"
                     ? "bg-gradient-to-r from-[#07a6ec] to-[#0696d7] text-white"
                     : "bg-gray-100 dark:bg-gray-700"
-                }`}
+                  }`}
               >
                 <p className="text-sm leading-relaxed">{msg.content}</p>
               </div>

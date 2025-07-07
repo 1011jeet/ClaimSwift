@@ -9,7 +9,7 @@ import { Send, X, Mic, Maximize2, Minimize2, Brain } from "lucide-react"
 import { GoogleGenerativeAI } from "@google/generative-ai"
 
 // Initialize Gemini API
-const genAI = new GoogleGenerativeAI("AIzaSyD7Lo4tZk7V3iwZ0XsutrjZEEwYqqVBr40")
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
 // Global chat history array
 let chatHistory: { role: 'user' | 'chatbot'; content: string }[] = [];
